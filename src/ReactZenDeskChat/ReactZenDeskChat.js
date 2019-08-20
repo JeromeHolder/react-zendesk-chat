@@ -81,11 +81,11 @@ export default class ZenDeskChat extends Component {
 				});
 			})(document, "script", appID);
 
-			loadZenDesk.then(async () => {
-				language && await this.setChatLanguage(language);
-				title && await this.setTitleText(title);
-				preChatGreeting && await this.setPreChatGreeting(preChatGreeting);
-				badgeText && await this.setBadgeText(badgeText);
+			loadZenDesk.then(() => {
+				language && this.setChatLanguage(language);
+				title && this.setTitleText(title);
+				preChatGreeting && this.setPreChatGreeting(preChatGreeting);
+				badgeText && this.setBadgeText(badgeText);
 			})
 			.catch(error => {
 				console.log(error);
@@ -94,26 +94,26 @@ export default class ZenDeskChat extends Component {
 		};
 	};
 
-	setChatLanguage = async language => {
-		return await $zopim(function() {
+	setChatLanguage = language => {
+		$zopim(function() {
 			$zopim.livechat.setLanguage(language);
 		});
 	};
 
-	setTitleText = async title => {
-		return await $zopim(function() {
+	setTitleText = title => {
+		$zopim(function() {
 			$zopim.livechat.window.setTitle(title);
 		});
 	};
 
-	setPreChatGreeting = async preChatGreeting => {
-		return await $zopim(function() {
+	setPreChatGreeting = preChatGreeting => {
+		$zopim(function() {
 			$zopim.livechat.prechatForm.setGreetings(preChatGreeting);
 		});
 	};
 
-	setBadgeText = async badgeText => {
-		return await $zopim(function() {
+	setBadgeText = badgeText => {
+		$zopim(function() {
 			$zopim.livechat.badge.setText(badgeText);
 		});
 	};
