@@ -86,7 +86,6 @@ export default class ZenDeskChat extends Component {
 				title && await this.setTitleText(title);
 				preChatGreeting && await this.setPreChatGreeting(preChatGreeting);
 				badgeText && await this.setBadgeText(badgeText);
-				delete window.$zopim;
 			})
 			.catch(error => {
 				console.log(error);
