@@ -81,11 +81,11 @@ export default class ZenDeskChat extends Component {
 				});
 			})(document, "script", appID);
 
-			loadZenDesk.then(() => {
-				language && this.setChatLanguage(language);
-				title && this.setTitleText(title);
-				preChatGreeting && this.setPreChatGreeting(preChatGreeting);
-				badgeText && this.setBadgeText(badgeText);
+			loadZenDesk.then(async () => {
+				language && await this.setChatLanguage(language);
+				title && await this.setTitleText(title);
+				preChatGreeting && await this.setPreChatGreeting(preChatGreeting);
+				badgeText && await this.setBadgeText(badgeText);
 				delete window.$zopim;
 			})
 			.catch(error => {
@@ -99,24 +99,28 @@ export default class ZenDeskChat extends Component {
 		$zopim(function() {
 			$zopim.livechat.setLanguage(language);
 		});
+		return;
 	};
 
 	setTitleText = title => {
 		$zopim(function() {
 			$zopim.livechat.window.setTitle(title);
 		});
+		return;
 	};
 
 	setPreChatGreeting = preChatGreeting => {
 		$zopim(function() {
 			$zopim.livechat.prechatForm.setGreetings(preChatGreeting);
 		});
+		return;
 	};
 
 	setBadgeText = badgeText => {
 		$zopim(function() {
 			$zopim.livechat.badge.setText(badgeText);
 		});
+		return;
 	};
 
 	shouldComponentUpdate() {
