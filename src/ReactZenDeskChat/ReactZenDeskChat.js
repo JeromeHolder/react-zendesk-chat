@@ -95,32 +95,28 @@ export default class ZenDeskChat extends Component {
 		};
 	};
 
-	setChatLanguage = language => {
-		$zopim(function() {
+	setChatLanguage = async language => {
+		return await $zopim(function() {
 			$zopim.livechat.setLanguage(language);
 		});
-		return;
 	};
 
-	setTitleText = title => {
-		$zopim(function() {
+	setTitleText = async title => {
+		return await $zopim(function() {
 			$zopim.livechat.window.setTitle(title);
 		});
-		return;
 	};
 
-	setPreChatGreeting = preChatGreeting => {
-		$zopim(function() {
+	setPreChatGreeting = async preChatGreeting => {
+		return await $zopim(function() {
 			$zopim.livechat.prechatForm.setGreetings(preChatGreeting);
 		});
-		return;
 	};
 
-	setBadgeText = badgeText => {
-		$zopim(function() {
+	setBadgeText = async badgeText => {
+		return await $zopim(function() {
 			$zopim.livechat.badge.setText(badgeText);
 		});
-		return;
 	};
 
 	shouldComponentUpdate() {
